@@ -7,13 +7,15 @@
 }
 :root {
   font-size: 62.5%;
-  --primary-color: hsl(170, 100%, 26%);
+  --hue: 290;
+  --primary-color: hsl(var(--hue), 100%, 26%);
   --headline: hsl(210, 11%, 15%);
   --paragraph: hsl(210, 9%, 31%);
   --brand-beige: hsl(39, 100%, 97%);
-  --brand-light: hsl(148, 100%, 89%);
+  --brand-light: hsl(calc(var(--hue) - 22), 100%, 89%);
   --bg-light: hsl(180, 14%, 97%);
   --nav-heigth: 7.2rem;
+  --brand-dark: hsl(var(--hue), 100%, 14%);
 }
 html {
   scroll-behavior: smooth;
@@ -38,7 +40,7 @@ body {
   margin-inline: auto;
   padding-inline: 2.4rem;
 }
-img{
+img {
   max-width: 100%;
 }
 ul {
@@ -47,22 +49,22 @@ ul {
 section {
   padding-block: 10rem;
 }
-section header h4{
+section header h4 {
   font-size: 1.4rem;
   color: var(--primary-color);
   margin-bottom: 1.6rem;
   font-weight: 700;
   line-height: 150%;
-  letter-spacing: .08rem;
+  letter-spacing: 0.08rem;
   margin-bottom: 1.6rem;
   text-transform: uppercase;
 }
-section header h2{
+section header h2 {
   font-size: 3rem;
   line-height: 3.9rem;
   color: var(--headline);
 }
-section header h1{
+section header h1 {
   font-size: 3.4rem;
   color: var(--headline);
   line-height: 130%;
@@ -73,6 +75,52 @@ section .content p {
   font-size: 1.6rem;
   line-height: 150%;
   color: var(--paragraph);
+}
+.button {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 4rem;
+  margin-bottom: 6rem;
+  padding: 1.6rem 3.2rem;
+  width: fit-content;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.button:hover {
+  background-color: var(--brand-dark);
+}
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.2rem;
+}
+/* custon color */
+#services .card circle {
+  fill: var(--brand-light);
+}
+#navigation .logo path[fill*='#00856F'],
+#backToTopButton circle {
+  fill: var(--primary-color);
+}
+button.open-menu path[stroke*='#00856F'],
+#contact li path {
+  stroke: var(--primary-color);
+}
+body.menu-expanded #navigation .logo path,
+#navigation.scroll .logo path{
+  fill: #fff;
+}
+#navigation.scroll button.open-menu path[stroke*='#00856F'] {
+  stroke: #fff;
 }
 /* ======= NAVIGATION ======= */
 nav {
@@ -90,12 +138,6 @@ nav .wrapper {
 }
 nav.scroll {
   background: var(--primary-color);
-}
-nav.scroll .logo path {
-  fill: #fff;
-}
-nav.scroll button path {
-  stroke: #fff;
 }
 nav button {
   background: none;
@@ -162,12 +204,12 @@ body.menu-expanded .menu {
   margin-top: 4.8rem;
   margin-bottom: 8rem;
 }
-.social-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3.2rem;
+.menu .button:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  filter: brightness(1.3);
 }
+
 body.menu-expanded .logo,
 body.menu-expanded button {
   position: relative;
@@ -194,30 +236,15 @@ body.menu-expanded button path {
   left: 0;
   z-index: -1;
 }
+#home .button {
+  margin-inline: auto;
+}
 #home p {
   font-size: 1.8;
   line-height: 150%;
   font-weight: 400;
   color: var(--paragraph);
   margin-bottom: 3.2rem;
-}
-#home button {
-  background-color: var(--primary-color);
-  border: none;
-  border-radius: 4rem;
-  margin-bottom: 6rem;
-  height: 6.2rem;
-  width: 26.3rem;
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 1.4rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.6rem;
-  margin-right: auto;
-  margin-left: auto;
 }
 #home img {
   width: 26.4rem;
@@ -250,7 +277,7 @@ body.menu-expanded button path {
   line-height: 150%;
 }
 /* ======= SEVICES ======= */
-#services h2{
+#services h2 {
   margin-bottom: 6rem;
 }
 #services .cards {
@@ -269,14 +296,73 @@ body.menu-expanded button path {
   margin-block: 1.6rem;
 }
 /* ======= ABOUT ======= */
-#about{
+#about {
   text-align: left;
   background-color: var(--brand-beige);
 }
-#about header h2{
+#about header h2 {
   margin-bottom: 2.4rem;
 }
 #about .content p {
   margin-top: 2.4rem;
   margin-bottom: 6rem;
+}
+/* ======= CONTACT ======= */
+#contact {
+  text-align: left;
+}
+#contact header {
+  margin-bottom: 3.2rem;
+}
+#contact ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-bottom: 3.2rem;
+}
+#contact ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+/* ======= FOOTER ======= */
+footer {
+  background-color: var(--primary-color);
+  padding-block: 6rem;
+  text-align: left;
+  color: #fff;
+}
+footer .logo {
+  display: inline-block;
+  margin-bottom: 2.4rem;
+}
+footer .logo svg {
+  width: 23.6rem;
+  height: 3.1rem;
+}
+footer .logo path {
+  fill: #fff;
+}
+footer p {
+  color: var(--brand-beige);
+  line-height: 2;
+  margin-bottom: 3.2rem;
+}
+footer .social-links {
+  justify-content: flex-start;
+}
+/* ======= backToTopButton ======= */
+#backToTopButton {
+  position: fixed;
+  bottom: 1rem;
+  right: 2.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition: 200ms;
+}
+#backToTopButton.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
 }

@@ -43,9 +43,9 @@ function activateMenuAtCurrentSection(section) {
 
 function showNavOnScroll() {
   if (scrollY > 0) {
-    navigation.classList.add('scroll')
+    document.getElementById('navigation').classList.add('scroll')
   } else {
-    navigation.classList.remove('scroll')
+    document.getElementById('navigation').classList.remove('scroll')
   }
 }
 function backToTopButtonOnScroll() {
@@ -64,8 +64,8 @@ function closeMenu() {
 
 ScrollReveal({
   origin: 'top',
-  distance: '30px',
-  duration: 700
+  distance: '80px',
+  duration: 900
 }).reveal(`#home,
   #home img,
   #home .stats,
